@@ -79,6 +79,45 @@ Carga una o más imágenes en la galería de la empresa especificada.
 curl -X 'POST'   'https://dashboard-api.verifyfaces.com/companies/54/galleries/466/upload'   -H 'accept: application/json'   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE4NCwiaWF0IjoxNzQ2NzE3NTkxLCJleHAiOjE3NDY3MjExOTF9.s8I90pfl0Kyg32T1c9olxPBDcFIz05P2B7x0gHDCS5I'   -H 'Content-Type: multipart/form-data'   -F 'images=@51-0103846432-MemNo 982.png;type=image/png'
 ```
 
+
+---
+
+### ✏️ Actualizar metadata de una imagen
+
+**Endpoint:**
+
+```
+PATCH /companies/{company}/galleries/{gallery}/{image}
+```
+
+**Descripción:**
+
+Actualiza los metadatos de una imagen específica dentro de una galería.
+
+**Parámetros de ruta:**
+
+- `company`: ID de la empresa (number)
+- `gallery`: ID de la galería (number)
+- `image`: ID de la imagen (number)
+
+**Cuerpo de la petición (application/json):**
+
+```json
+{
+  "metadata": {
+    "name": "0100019041-MemNo 392",
+    "comment": "string"
+  }
+}
+```
+
+**Ejemplo con Curl:**
+
+```bash
+curl -X 'PATCH'   'https://dashboard-api.verifyfaces.com/companies/54/galleries/466/104877'   -H 'accept: application/json'   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjE4NCwiaWF0IjoxNzQ2NzE3NTkxLCJleHAiOjE3NDY3MjExOTF9.s8I90pfl0Kyg32T1c9olxPBDcFIz05P2B7x0gHDCS5I'   -H 'Content-Type: application/json'   -d '{"metadata":{"name":"0103837951-MemNo 961","comment":""}}'
+```
+
+
 ---
 
 ## 🔐 Autenticación
@@ -90,21 +129,5 @@ Authorization: Bearer <tu_token_de_acceso>
 ```
 
 Reemplaza `<tu_token_de_acceso>` con un token válido generado por el sistema.
-
----
-
-## 📎 Recomendaciones
-
-- Asegúrate de tener permisos válidos para el `company` y la `gallery`.
-- Para múltiples imágenes, repite el uso del parámetro `-F 'images=@archivo.ext'`.
-- Puedes automatizar la subida utilizando un script que lea el archivo generado por PowerShell (`lista_imagenes_numeros.txt`).
-
----
-
-## 📂 Flujo sugerido
-
-1. Ejecuta el script en PowerShell para obtener la lista ordenada de archivos.
-2. Verifica o edita `lista_imagenes_numeros.txt`.
-3. Utiliza un bucle en Bash o PowerShell para cargar imágenes a la API con el endpoint `upload`.
 
 ---
