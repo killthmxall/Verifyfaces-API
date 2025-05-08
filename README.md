@@ -5,14 +5,10 @@
 
 ## 🖥️ Obtener listado de nombres de archivos (PowerShell)
 
-El siguiente comando lista los nombres de archivos en el directorio actual, excluyendo el archivo `lista_imagenes.txt`, ordenándolos por el número inicial del nombre de archivo y guardando el resultado en `lista_imagenes_numeros.txt`.
+El siguiente comando lista los nombres de archivos en el directorio actual guardando el resultado en `lista_imagenes.txt`.
 
 ```powershell
-Get-ChildItem -File |
-  Where-Object { $_.Name -ne 'lista_imagenes.txt' } |
-  Sort-Object { [int]($_.Name.Split('-')[0]) } |
-  Select-Object -ExpandProperty Name >
-  lista_imagenes_numeros.txt
+Get-ChildItem -Include *.jpg,*.jpeg,*.png,*.gif -File | Select-Object -ExpandProperty BaseName > lista_imagenes.txt 
 ```
 
 ---
