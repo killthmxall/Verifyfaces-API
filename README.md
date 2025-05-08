@@ -1,8 +1,6 @@
 
 # 📁 Gestión de Galerías e Imágenes con API y PowerShell
 
-Este documento describe cómo obtener nombres de archivos de una carpeta local usando PowerShell y cómo interactuar con la API de VerifyFaces para listar e importar imágenes en una galería de una empresa.
-
 ---
 
 ## 🖥️ Obtener listado de nombres de archivos (PowerShell)
